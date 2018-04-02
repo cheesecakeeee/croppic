@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Aspect Ratio with Preview Pane | Jcrop Demo</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.Jcrop.js"></script>
+
+
+<link rel="stylesheet" href="/css/jquery.Jcrop.css" type="text/css" />
+<link rel="stylesheet" href="/css/base.css">
+</head>
+<body>
+
+  <img src="/images/susu.jpeg" id="target" alt="[Jcrop Example]" />
+
+  <div id="preview-pane">
+    <div class="preview-container">
+      <img src="/images/susu.jpeg" class="jcrop-preview" alt="Preview" />
+    </div>
+  </div>
+
+  <input type="button" value="裁切" id="btn">
+<script src="/js/xiaoguo.js"></script>
+<script>
+
+  $("#btn").click(function(){
+    var w = parseInt($(".jcrop-holder>div:first").css('width'));
+    var h = parseInt($(".jcrop-holder>div:first").css('height'));
+    var x = parseInt($(".jcrop-holder>div:first").css('top'));
+    var y = parseInt($(".jcrop-holder>div:first").css('left'));
+    
+    $.get("/docut",{
+      "w":w,
+      "h":h,
+      "x":x,
+      "y":y
+    },function(result){
+      alert(result)
+    })
+  })
+</script>
+
+
+</body>
+</html>
+
